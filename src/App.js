@@ -13,7 +13,7 @@ function App() {
 
 
   const getData =()=>{
-    axios.get("/clientes").then(response=>{
+    axios.get("https://funny-manatee-217b3e.netlify.app/.netlify/functions/api/clientes").then(response=>{
       console.log(response);
       setData(JSON.stringify(response.data))
     }).catch(error=>{
