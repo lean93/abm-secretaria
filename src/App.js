@@ -1,35 +1,22 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-import Alert from 'react-bootstrap/Alert';
-import Button from 'react-bootstrap/Button';
-import axios from 'axios';
-
 import React, { useState } from 'react';
+import TestForm from './components/forms/TestForm';
+import LoginComponent from './components/login/LoginComponent';
 
 
 function App() {
 
-  const [data, setData] = useState("Vacio");
+  const [userData, setUserData] = useState(undefined);
 
-
-  const getData =()=>{
-    axios.get("https://funny-manatee-217b3e.netlify.app/.netlify/functions/api/clientes").then(response=>{
-      console.log(response);
-      setData(JSON.stringify(response.data))
-    }).catch(error=>{
-
-    });
+  const exitFunction = ()=>{
+    setUserData(undefined);
   }
 
   return (
     <>
-    <Alert key='success' variant='success'>
-      Pronto aca vas a poder cargar todo Agustin
-    </Alert> 
-    <Button onClick={getData} variant="primary">Buscar</Button>
-    <h4>{data}</h4>
-     </>
-    );
+    {!userData? <LoginComponent login={setUserData}/>:<TestForm userData={userData} exit={exitFunction}/> }
+    </>
+  );
 }
 
 export default App;
