@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -8,10 +7,6 @@ function LoginComponent(props) {
   const [user, setUser] = useState();
   const [password, setPassword] = useState();
 
-
-  const getData =()=>{
-
-  }
 
   const onChangeInput = (e, stateSetter)=>{
     stateSetter(e.target.value)
